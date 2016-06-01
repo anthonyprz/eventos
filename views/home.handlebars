@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <p>session {{session}}</p>
+    <p>usuario: {{usuario}}</p>
+    <p>email: {{email}}</p>
+    <p id="idUsuario" value"{{idusuario}}"></p>
+    <div id="crearevento">
+        <form>
+            <h1>crear evento</h1>
+            <input type="text" name="nombre" placeholder="nombre evento">
+            <br/>
+            <input type="text" name="descripcion" placeholder="descripcion">
+            <br/>
+            <input type="text" name="lugar" placeholder="lugar">
+            <br/>
+            <input type="date" name="fechainicio" placeholder="fecha inicio">
+            <br/>
+            <input type="date" name="fechafin" placeholder="fecha fin">
+            <br/>
+            <input type="number" name="limite" placeholder="limite de personas">
+            <br/>
+            <input type="radio" name="publico" value="publico"> hacer publico
+            <br/>
+              <input type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+
+</html>

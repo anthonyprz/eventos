@@ -1,0 +1,14 @@
+{
+  "name": "connectevents",
+  "version": "0.0.0",
+  "description": "anthony app",
+  "main": "server.js",
+  "repository": "",
+  "author": "anthony",
+  "dependencies": {
+    "async": "~0.2.8",
+    "express": "~3.2.4",
+    "handlebars": "^4.0.5",
+    "socket.io": "~0.9.14"
+  }
+}
