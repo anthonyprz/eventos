@@ -48,7 +48,4 @@ exports.selectUsuario = function(req, res, username, pss) {
 		}
 
 	});
-
-
-
 };

@@ -10,7 +10,7 @@
   margin: auto;
 }
 .floaty {
-  position: absolute;
+  position: fixed;
   bottom: 15px;
   right: 15px;
 }
@@ -20,6 +20,7 @@
 }
 
 .floaty-btn {
+  
   position: relative;
   width: 56px;
   height: 56px;
