@@ -5,25 +5,38 @@
     <link rel="stylesheeti" href="css/home.css">
     <script src="js/angular.min.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css" />
 
-    
+
+
 
     <style>
-        table,
-        th,
-        td {
-            border: 1px solid grey;
-            border-collapse: collapse;
-            padding: 5px;
+        body {
+            background: #EBEEF0;
+            flex-wrap: wrap;
         }
         
-        table tr:nth-child(odd) {
-            background-color: #f1f1f1;
+        .cuadros {
+            box-sizing: border-box;
+            width: 23%;
+            min-width: 200px;
+            height: 300px;
+            display: inline-block;
+            margin: 0 2px;
+            position: relative;
+            margin: 10px;
+            overflow: hidden;
+            transition: all .3s ease;
+            border-radius: 2px;
+            box-shadow: 0 3px 6px 0 black, 0 2px 2px 0 rgba(0, 0, 0, 0.2);
         }
         
-        table tr:nth-child(even) {
-            background-color: #ffffff;
+        .cuadros:hover {
+            /*box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.3), 0 15px 15px 0 rgba(0, 0, 0, 0.15);*/
+            box-shadow: 0 12px 35px 0 rgba(0, 0, 0, 0.25), 0 8px 12px 0 rgba(0, 0, 0, 0.15);
+        }
+        
+        .cuadros {
+            background: #fff;
         }
     </style>
 
@@ -59,35 +72,19 @@
     </div>
 
     <div ng-app="myApp" ng-controller="customersCtrl">
-       <!-- <table>
-            <tr>
-                <td>nombre</td>
-                <td>descripcion</td>
-                <td>fecha_inicio</td>
-                <td>fecha_fin</td>
-                <td>limite_usuarios</td>
-                <td>direccion</td>
-                <td>publico</td>
-                <td>terminado</td>
-            </tr>
-            <tr ng-repeat="x in event">
-              
-                <td>// x.Nombre //</td>
-                <td>// x.descripcion //</td>
-               
-                <td>// x.fecha_inicio //</td>
-                <td>// x.fecha_fin //</td>
-                <td>// x.limite_usuarios //</td>
-                <td>// x.direccion //</td>
-                <td>// x.publico //</td>
-                <td>// x.terminado //</td>
 
-            </tr>
-        </table>
--->
-        <div class="card" ng-repeat="x in event">
-            <app-info info="x"></app-info>
-            <install-app></install-app>
+        <div class="cuadros" ng-repeat="x in event">
+            <p>nombre: // x.Nombre //</p>
+            <p>descripcion: // x.descripcion //</p>
+            <p>fecha_inicio: // x.fecha_inicio //</p>
+            <p>fecha_fin: // x.fecha_fin //</p>
+            <p>limite_usuarios: // x.limite_usuarios //</p>
+            <p>direccion: // x.direccion //</p>
+            <p>publico: // x.publico //</p>
+            <p>terminado: // x.terminado //</p>
+
+            <!-- <app-info info="x"></app-info>
+            <install-app></install-app>-->
 
         </div>
 
@@ -111,8 +108,6 @@
                 var config = {
                     params: parameters
                 };
-
-
                 $http.get("https://connectevents-anthonyprz.c9users.io/mostrareventos/" + config.params.idusu)
 
                 .then(function(response) {
@@ -121,8 +116,8 @@
 
             });
         </script>
-<script src="js/directives/eventsInfo.js"></script>
     </div>
+    <!-- <script src="js/directives/eventsInfo.js"></script>-->
 </body>
 
 </html>
