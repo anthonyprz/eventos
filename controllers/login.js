@@ -4,6 +4,7 @@ var usuarioDB = require("../models/usuario");
 var md5 = require("md5")
 var randomstring = require('randomstring');
 
+
 exports.login = function(req, res) {
     
     var username = req.body.lusername;

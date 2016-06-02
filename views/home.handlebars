@@ -2,33 +2,126 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheeti" href="css/home.css">
+    <script src="js/angular.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="./jquery.datetimepicker.css" />
+
+    
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+
 </head>
 
 <body>
     <p>session {{session}}</p>
     <p>usuario: {{usuario}}</p>
     <p>email: {{email}}</p>
-    <p id="idUsuario" value"{{idusuario}}"></p>
+    <p id="idUsuario" value="{{idusuario}}" hidden></p>
     <div id="crearevento">
-        <form>
+        <form method="POST" action="/crearevento">
             <h1>crear evento</h1>
             <input type="text" name="nombre" placeholder="nombre evento">
             <br/>
             <input type="text" name="descripcion" placeholder="descripcion">
             <br/>
-            <input type="text" name="lugar" placeholder="lugar">
+            <input type="text" name="direccion" placeholder="direccion">
             <br/>
+            <input type="text" hidden name="idusuarioF" value="{{idusuario}}" placeholder="direccion">
+
             <input type="date" name="fechainicio" placeholder="fecha inicio">
             <br/>
             <input type="date" name="fechafin" placeholder="fecha fin">
             <br/>
             <input type="number" name="limite" placeholder="limite de personas">
             <br/>
-            <input type="radio" name="publico" value="publico"> hacer publico
+            <input type="radio" name="publico" value="true"> hacer publico
             <br/>
-              <input type="submit" value="Submit" />
+
+            <input type="submit" value="Submit" />
         </form>
+    </div>
+
+    <div ng-app="myApp" ng-controller="customersCtrl">
+       <!-- <table>
+            <tr>
+                <td>nombre</td>
+                <td>descripcion</td>
+                <td>fecha_inicio</td>
+                <td>fecha_fin</td>
+                <td>limite_usuarios</td>
+                <td>direccion</td>
+                <td>publico</td>
+                <td>terminado</td>
+            </tr>
+            <tr ng-repeat="x in event">
+              
+                <td>// x.Nombre //</td>
+                <td>// x.descripcion //</td>
+               
+                <td>// x.fecha_inicio //</td>
+                <td>// x.fecha_fin //</td>
+                <td>// x.limite_usuarios //</td>
+                <td>// x.direccion //</td>
+                <td>// x.publico //</td>
+                <td>// x.terminado //</td>
+
+            </tr>
+        </table>
+-->
+        <div class="card" ng-repeat="x in event">
+            <app-info info="x"></app-info>
+            <install-app></install-app>
+
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+
+            app.config(function($interpolateProvider) {
+                $interpolateProvider.startSymbol('//');
+                $interpolateProvider.endSymbol('//');
+            });
+
+            //https://connectevents-anthonyprz.c9users.io/mostrareventos/TP4yzZVPwotkXiNiBwQeDg3FmRXwbRMpvxZRueFp
+            //https://connectevents-anthonyprz.c9users.io/mostrareventos/bWxa7LyVph5SFoKJXyCjMIgU6TdlmUXBTXPL8FUS
+
+            app.controller('customersCtrl', function($scope, $http) {
+
+
+                var parameters = {
+                    idusu: '{{idusuario}}'
+                };
+                var config = {
+                    params: parameters
+                };
+
+
+                $http.get("https://connectevents-anthonyprz.c9users.io/mostrareventos/" + config.params.idusu)
+
+                .then(function(response) {
+                    $scope.event = response.data.eventos;
+                });
+
+            });
+        </script>
+<script src="js/eventsInfo.js"></script>
     </div>
 </body>
 

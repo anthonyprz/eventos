@@ -10,14 +10,8 @@ var server = http.createServer(router);
 var io = socketio.listen(server);
 var exphbs = require('express-handlebars');
 
-
-
-
 var messages = [];
 var sockets = [];
-
-
-
 
 
 io.on('connection', function(socket) {
@@ -84,6 +78,8 @@ router.use(express.urlencoded()); // to support URL-encoded bodies
 
 var registro = require('./controllers/registro.js');
 var login = require('./controllers/login.js');
+var crearevento = require("./controllers/crearEvento.js")
+var mostrarEventos = require("./controllers/mostrarEventos.js")
 
 var session = require('express-session');
  var cookieParser = require('cookie-parser');
@@ -105,12 +101,15 @@ router.set('view engine', 'handlebars');
 router.use(express.static(path.resolve(__dirname, 'views')));
 //router.get('/home', function(req, res) {
 //   res.redirect('home.handlebars');
-
  //   });
     
 
 router.post('/usuario/registro', registro.registro);
 router.post('/login', login.login);
+router.post('/crearevento', crearevento.crearevento);
+router.get('/mostrareventos/:idusu', mostrarEventos.mostrareventos);
+
+
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
   var addr = server.address();
