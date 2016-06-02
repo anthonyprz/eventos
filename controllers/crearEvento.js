@@ -15,8 +15,9 @@ exports.crearevento = function(req, res) {
     var publico = req.body.publico;
     
     
-    console.log(idevento,nombre,descripcion,idusuario,fechainicio,fechafin,limite,direccion,publico)
+   // console.log(idevento,nombre,descripcion,idusuario,fechainicio,fechafin,limite,direccion,publico)
     
-    evento.insertEvento(idevento,nombre,descripcion,idusuario,fechainicio,fechafin,limite,direccion,publico);
+    evento.insertEvento(req, res, idevento,nombre,descripcion,idusuario,fechainicio,fechafin,limite,direccion,publico);
+    
     
 }

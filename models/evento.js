@@ -1,11 +1,9 @@
 var connection = require('../models/connection');
 var evento = {};
 
-exports.insertEvento = function(idevento, nombre,descripcion,idusuario,fechainicio, fechafin, limite, direccion, publico) {
+exports.insertEvento = function( req, res, idevento, nombre,descripcion,idusuario,fechainicio, fechafin, limite, direccion, publico) {
 	var unocero = 0; 
 	if (publico == 'true'){unocero = 1;}
-	//else (publico == 'false'){unocero = 0;}
-	
 	var data = {
 		id: idevento,
 	    Nombre:nombre,
@@ -20,16 +18,17 @@ exports.insertEvento = function(idevento, nombre,descripcion,idusuario,fechainic
 	var query = connection.query('INSERT INTO eventos SET ?', data, function(err, result) {
 		if (err) {
 			console.log("error al añadir " + err);
-			throw err;
+		//	throw err;
+		
 		}
 		else {
 			console.log("evento creado")
-		} //else
+		} 
 	});
 	console.log(query.sql);
+		res.render('home')
+		
 }
-
-
 
 exports.selecteventos = function(req, res) {
 	

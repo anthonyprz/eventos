@@ -7,6 +7,4 @@ app.directive('eventsInfo', function() {
     }, 
     templateUrl: './js/directives/eventsInfo.handlebars' 
   }; 
-
-
 });
